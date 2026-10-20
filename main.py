@@ -12,13 +12,7 @@ from cogs.other import Other
 
 sys.path.insert(0, os.getcwd())
 
-with open("config.json", "r") as f:
-    config = json.load(f)
-
-# variables
-prefix = config["prefix"]
-shard_count = config["shard_count"]
-token = config["discord_token"]
+import config
 
 class MyBot(commands.AutoShardedBot):
     async def setup_hook(self):
@@ -33,5 +27,5 @@ class MyBot(commands.AutoShardedBot):
 if __name__ == "__main__":
     intents = discord.Intents.all()
     intents.message_content = True
-    bot = MyBot(command_prefix=prefix,shard_count=shard_count,case_insensitive=True,intents=intents)
-    bot.run(token)
+    bot = MyBot(command_prefix=config.prefix,shard_count=config.shard_count,case_insensitive=True,intents=intents)
+    bot.run(config.discord_token)
