@@ -223,7 +223,7 @@ __marimo__/
 Include/
 Scripts/
 Lib/
-pyenv.cfg
+pyvenv.cfg
 
 # Meadow Bot
 temp/
