@@ -6,6 +6,10 @@ class Other(commands.Cog, name="Other"):
     def __init__(self, bot):
         self.bot: commands.Bot = bot
 
-    @commands.hybrid_command(name="ping", description="Replies with Pong!")
+    @commands.hybrid_command()
     async def ping(self, ctx: commands.Context):
+        """
+        Ping. Yes.
+        You know.
+        """
         await ctx.send(f"Pong! {round(self.bot.latency * 1000)}ms")

@@ -10,18 +10,19 @@ import json
 # cogs
 from cogs.other import Other
 
+sys.path.insert(0, os.getcwd())
+
 with open("config.json", "r") as f:
     config = json.load(f)
 
-bot_prefix          = config["prefix"]
-bot_tempdir         = config["temp_directory"]
-bot_storagedir      = config["data_directory"]
-bot_token           = config["discord_token"]
-bot_maxfilesize     = config["max_file_size"]
-bot_shards          = config["shard_count"]
+# variables
+prefix = config["prefix"]
+shard_count = config["shard_count"]
+token = config["discord_token"]
 
 class MyBot(commands.AutoShardedBot):
     async def setup_hook(self):
+        await bot.tree.sync()
         await asyncio.gather(
             bot.add_cog(Other(bot))
         )
@@ -32,5 +33,5 @@ class MyBot(commands.AutoShardedBot):
 if __name__ == "__main__":
     intents = discord.Intents.all()
     intents.message_content = True
-    bot = MyBot(command_prefix=bot_prefix,shard_count=bot_shards,case_insensitive=True,intents=intents)
-    bot.run(bot_token)
+    bot = MyBot(command_prefix=prefix,shard_count=shard_count,case_insensitive=True,intents=intents)
+    bot.run(token)
