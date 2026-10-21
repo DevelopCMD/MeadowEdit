@@ -7,8 +7,8 @@ import os
 import sys 
 import json
 
-# cogs
-from cogs.other import Other
+# bot data
+from meadow.commands.other import Other
 
 sys.path.insert(0, os.getcwd())
 
