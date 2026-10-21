@@ -16,13 +16,14 @@ import config
 
 class MyBot(commands.AutoShardedBot):
     async def setup_hook(self):
-        await bot.tree.sync()
         await asyncio.gather(
             bot.add_cog(Other(bot))
         )
 
     async def on_ready(self):
         print(f"Logged in")
+        sync = await bot.tree.sync()
+        print(f"Synced {len(sync)} commands")
 
 if __name__ == "__main__":
     intents = discord.Intents.all()

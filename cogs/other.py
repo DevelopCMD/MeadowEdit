@@ -1,5 +1,4 @@
 import discord
-from discord import app_commands
 from discord.ext import commands
 
 class Other(commands.Cog, name="Other"):
@@ -9,7 +8,6 @@ class Other(commands.Cog, name="Other"):
     @commands.hybrid_command()
     async def ping(self, ctx: commands.Context):
         """
-        Ping. Yes.
-        You know.
+        Check the latency of the bot.
         """
         await ctx.send(f"Pong! {round(self.bot.latency * 1000)}ms")
